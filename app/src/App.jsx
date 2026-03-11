@@ -59,6 +59,7 @@ function App() {
           <CostPanel />
         </aside>
       </main>
+
     </div>
   );
 }
