@@ -4,6 +4,7 @@ import CarSelector from './components/CarSelector';
 import PartSelector from './components/PartSelector';
 import CostPanel from './components/CostPanel';
 import SavedBuilds from './components/SavedBuilds';
+import ClaudeAssistant from './components/ClaudeAssistant';
 import useStore from './store/useStore';
 import { getPartsForCar } from './data/parts';
 import './App.css';
@@ -59,6 +60,8 @@ function App() {
           <CostPanel />
         </aside>
       </main>
+
+      <ClaudeAssistant />
     </div>
   );
 }
