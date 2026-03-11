@@ -141,7 +141,7 @@ const useStore = create((set, get) => ({
       parts: selectedParts.map((p) => p.id),
     };
     const encoded = btoa(JSON.stringify(data));
-    return `${window.location.origin}${window.location.pathname}?build=${encoded}`;
+    return `${window.location.origin}${window.location.pathname}#/build?build=${encoded}`;
   },
 }));
 
