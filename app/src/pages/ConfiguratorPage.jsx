@@ -1,10 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import CarViewer from '../components/CarViewer';
 import CarSelector from '../components/CarSelector';
 import PartSelector from '../components/PartSelector';
 import CostPanel from '../components/CostPanel';
 import SavedBuilds from '../components/SavedBuilds';
+import ScenePanel from '../components/ScenePanel';
 import useStore from '../store/useStore';
 import { getPartsForCar } from '../data/parts';
 
@@ -12,6 +13,7 @@ function ConfiguratorPage() {
   const selectCar = useStore((s) => s.selectCar);
   const addPart = useStore((s) => s.addPart);
   const [searchParams] = useSearchParams();
+  const [rightTab, setRightTab] = useState('parts');
 
   useEffect(() => {
     const buildParam = searchParams.get('build');
@@ -60,8 +62,30 @@ function ConfiguratorPage() {
         </section>
 
         <aside className="sidebar sidebar-right">
-          <PartSelector />
-          <CostPanel />
+          {/* Tab switcher */}
+          <div className="right-tab-bar">
+            <button
+              className={`right-tab ${rightTab === 'parts' ? 'active' : ''}`}
+              onClick={() => setRightTab('parts')}
+            >
+              🔧 Parts
+            </button>
+            <button
+              className={`right-tab ${rightTab === 'scene' ? 'active' : ''}`}
+              onClick={() => setRightTab('scene')}
+            >
+              🎬 Scene
+            </button>
+          </div>
+
+          {rightTab === 'parts' ? (
+            <>
+              <PartSelector />
+              <CostPanel />
+            </>
+          ) : (
+            <ScenePanel />
+          )}
         </aside>
       </main>
     </div>

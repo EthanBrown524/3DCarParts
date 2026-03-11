@@ -578,6 +578,230 @@ body {
   padding: 20px;
 }
 
+/* ===== Right Sidebar Tabs ===== */
+.right-tab-bar {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 16px;
+  background: var(--bg-primary);
+  border-radius: var(--radius);
+  padding: 3px;
+}
+
+.right-tab {
+  flex: 1;
+  padding: 7px 10px;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.right-tab:hover {
+  color: var(--text-primary);
+}
+
+.right-tab.active {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+
+/* ===== Scene Panel ===== */
+.scene-panel {
+  padding-top: 4px;
+}
+
+.scene-section-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  margin-top: 4px;
+}
+
+.scene-presets {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.scene-preset-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 4px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.15s;
+  color: var(--text-primary);
+}
+
+.scene-preset-btn:hover {
+  border-color: var(--accent);
+}
+
+.scene-preset-btn.active {
+  border-color: var(--accent);
+  background: rgba(79, 143, 255, 0.08);
+}
+
+.preset-swatch {
+  width: 100%;
+  height: 32px;
+  border-radius: 4px;
+  display: block;
+}
+
+.preset-icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.preset-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.scene-preset-btn.active .preset-label {
+  color: var(--accent);
+}
+
+.scene-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.scene-control-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.scene-control-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.scene-control-value {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.scene-slider {
+  width: 100%;
+  height: 4px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--border);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+.scene-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  background: var(--accent);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.scene-slider::-webkit-slider-thumb:hover {
+  background: var(--accent-hover);
+}
+
+.scene-color-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.scene-color-input {
+  width: 36px;
+  height: 28px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  cursor: pointer;
+  padding: 2px;
+}
+
+.scene-color-hex {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-family: monospace;
+}
+
+.light-color-presets {
+  display: flex;
+  gap: 6px;
+  margin-left: 4px;
+}
+
+.light-color-btn {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.light-color-btn:hover,
+.light-color-btn.active {
+  border-color: var(--accent);
+}
+
+.scene-toggle-row {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.scene-toggle {
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  transition: all 0.15s;
+}
+
+.scene-toggle.on {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.scene-toggle.off {
+  background: var(--bg-card);
+  color: var(--text-muted);
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 1100px) {
   .app-layout {

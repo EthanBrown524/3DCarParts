@@ -24,6 +24,21 @@ const useStore = create((set, get) => ({
   viewerColor: '#cccccc',
   showFitmentPanel: false,
 
+  // Scene / environment settings
+  sceneConfig: {
+    preset: 'studio',
+    bgColor: '#d8d8d8',
+    groundColor: '#f0f0f0',
+    ambientIntensity: 0.9,
+    sunIntensity: 1.6,
+    sunColor: '#fff8f0',
+    envPreset: 'studio',
+    showGrid: true,
+  },
+
+  setSceneConfig: (partial) =>
+    set((s) => ({ sceneConfig: { ...s.sceneConfig, ...partial } })),
+
   // Saved builds
   savedBuilds: JSON.parse(localStorage.getItem('savedBuilds') || '[]'),
 
