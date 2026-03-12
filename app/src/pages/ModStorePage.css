@@ -1,0 +1,626 @@
+/* ── ModStorePage ─────────────────────────────────────────────────── */
+
+.store-page {
+  min-height: 100vh;
+  background: var(--bg-deep);
+  color: var(--chrome);
+  font-family: 'Barlow', sans-serif;
+}
+
+/* ── Page nav (shared style, duplicated here for page isolation) ── */
+.page-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  height: 56px;
+  background: rgba(8,9,11,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.page-nav-brand {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--chrome);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.page-nav-brand .brand-icon { color: var(--accent); }
+
+.page-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.page-nav-link {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(212,220,230,0.6);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.page-nav-link:hover { color: var(--chrome); }
+
+/* ── Page header ── */
+.store-page-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 3rem 2.5rem 2rem;
+  border-bottom: 1px solid var(--border);
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.store-page-header-inner { flex: 1; }
+
+.store-eyebrow {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.store-page-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--chrome);
+  margin: 0 0 0.5rem;
+  line-height: 1;
+}
+
+.store-page-subtitle {
+  font-size: 0.95rem;
+  color: rgba(212,220,230,0.55);
+  margin: 0;
+}
+
+/* ── View toggle ── */
+.view-toggle {
+  display: flex;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-strong);
+  padding: 3px;
+  gap: 2px;
+}
+
+.view-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.9rem;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(212,220,230,0.45);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.view-toggle-btn:hover { color: var(--chrome); }
+.view-toggle-btn.active { background: var(--accent); color: #000; }
+
+/* ── ROW VIEW ── */
+.store-rows-container {
+  padding: 0 0 4rem;
+}
+
+.store-row-section {
+  padding: 2.5rem 0 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.store-row-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0 2.5rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.store-row-icon { font-size: 1.3rem; }
+
+.store-row-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 1.4rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--chrome);
+  margin: 0;
+}
+
+.store-row-count {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-glow);
+  border: 1px solid var(--border-accent);
+  padding: 0.2rem 0.55rem;
+  margin-left: auto;
+}
+
+.store-row-desc {
+  width: 100%;
+  font-size: 0.8rem;
+  color: rgba(212,220,230,0.4);
+  padding-left: 2.05rem;
+  margin-top: -0.5rem;
+}
+
+.store-row-scroll {
+  display: flex;
+  gap: 1rem;
+  padding: 0 2.5rem 1rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+.store-row-scroll::-webkit-scrollbar { height: 4px; }
+.store-row-scroll::-webkit-scrollbar-track { background: transparent; }
+.store-row-scroll::-webkit-scrollbar-thumb { background: var(--border-strong); }
+
+/* ── GRID VIEW ── */
+.store-grid-container {
+  padding: 2rem 2.5rem 4rem;
+}
+
+/* ── Store tab bar ── */
+.store-tab-bar {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.5rem;
+}
+
+.store-tab {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.7rem 1.2rem;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: rgba(212,220,230,0.45);
+  cursor: pointer;
+  transition: all 0.18s;
+  margin-bottom: -1px;
+}
+.store-tab:hover { color: var(--chrome); }
+.store-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* ── Sub-filter ── */
+.store-subfilter {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+
+.store-subfilter-btn {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.75rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  color: rgba(212,220,230,0.5);
+  cursor: pointer;
+  transition: all 0.18s;
+}
+.store-subfilter-btn:hover { border-color: var(--border-strong); color: var(--chrome); }
+.store-subfilter-btn.active { background: var(--accent); color: #000; border-color: var(--accent); }
+
+/* ── Products grid ── */
+.store-products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+/* ── Product card ── */
+.product-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s;
+  animation: fadeInUp 0.4s var(--ease-out) both;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.product-card:hover {
+  border-color: var(--border-accent);
+  transform: translateY(-2px);
+}
+
+.product-card-compact {
+  min-width: 220px;
+  max-width: 260px;
+  flex-shrink: 0;
+}
+
+.product-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  background: rgba(0,0,0,0.7);
+  padding: 0.15rem 0.45rem;
+  z-index: 2;
+}
+
+.product-visual {
+  height: 100px;
+  background: linear-gradient(135deg, #12151c 0%, #0a0c12 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.product-card-compact .product-visual { height: 80px; }
+
+.product-brand-mark {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 2rem;
+  letter-spacing: 0.05em;
+  color: rgba(212,220,230,0.12);
+}
+
+.product-category-chip {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: rgba(232,160,32,0.15);
+  border: 1px solid rgba(232,160,32,0.3);
+  color: var(--accent);
+  padding: 0.15rem 0.4rem;
+}
+
+.product-body {
+  padding: 0.8rem 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.product-brand {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(212,220,230,0.4);
+}
+
+.product-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--chrome);
+  line-height: 1.1;
+}
+
+.product-subtitle {
+  font-size: 0.72rem;
+  color: rgba(212,220,230,0.4);
+}
+
+.product-desc {
+  font-size: 0.78rem;
+  color: rgba(212,220,230,0.5);
+  line-height: 1.4;
+  margin-top: 0.2rem;
+}
+
+.product-colors {
+  display: flex;
+  gap: 5px;
+  margin-top: 0.3rem;
+}
+
+.product-color-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+.product-rating-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.2rem;
+}
+
+.star-rating {
+  color: var(--accent);
+  font-size: 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+.product-review-count {
+  font-size: 0.68rem;
+  color: rgba(212,220,230,0.35);
+}
+
+.product-compat {
+  font-size: 0.68rem;
+  color: rgba(212,220,230,0.35);
+  margin-top: 0.15rem;
+}
+
+.product-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.65rem 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.product-price {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+}
+
+.product-unit {
+  font-size: 0.68rem;
+  color: rgba(212,220,230,0.35);
+  flex: 1;
+}
+
+.product-cta {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: transparent;
+  border: 1px solid var(--border-accent);
+  color: var(--accent);
+  padding: 0.3rem 0.65rem;
+  cursor: pointer;
+  transition: all 0.18s;
+  white-space: nowrap;
+}
+.product-cta:hover { background: var(--accent); color: #000; border-color: var(--accent); }
+
+/* ── Company card compact (row) ── */
+.company-card-sm {
+  min-width: 160px;
+  max-width: 180px;
+  flex-shrink: 0;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  padding: 1rem;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.company-card-sm:hover { border-color: var(--border-accent); }
+
+/* ── Company card full (grid) ── */
+.store-companies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.company-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.company-card:hover { border-color: var(--border-accent); transform: translateY(-2px); }
+
+.company-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.company-logo-mark {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 1.4rem;
+  letter-spacing: 0.04em;
+}
+
+.company-country {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: var(--bg-deep);
+  border: 1px solid var(--border);
+  color: rgba(212,220,230,0.45);
+  padding: 0.15rem 0.4rem;
+}
+
+.company-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--chrome);
+}
+
+.company-specialty {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.company-tagline {
+  font-size: 0.75rem;
+  color: rgba(212,220,230,0.5);
+  font-style: italic;
+}
+
+.company-desc {
+  font-size: 0.78rem;
+  color: rgba(212,220,230,0.45);
+  line-height: 1.45;
+}
+
+.company-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.company-product-count {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(212,220,230,0.4);
+}
+
+.company-browse-btn {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: transparent;
+  border: 1px solid var(--border-accent);
+  color: var(--accent);
+  padding: 0.25rem 0.6rem;
+  cursor: pointer;
+  transition: all 0.18s;
+}
+.company-browse-btn:hover { background: var(--accent); color: #000; }
+
+/* ── Categories grid ── */
+.store-categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.store-cat-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  padding: 1.1rem 1.2rem;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.store-cat-card:hover { border-color: var(--border-accent); transform: translateY(-2px); }
+
+.store-cat-icon { font-size: 1.6rem; flex-shrink: 0; }
+
+.store-cat-body { flex: 1; min-width: 0; }
+
+.store-cat-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--chrome);
+}
+
+.store-cat-desc {
+  font-size: 0.75rem;
+  color: rgba(212,220,230,0.4);
+  margin-top: 0.2rem;
+}
+
+.store-cat-footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--border);
+}
+
+.store-cat-count {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.store-cat-arrow {
+  color: rgba(212,220,230,0.35);
+  font-size: 0.9rem;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
